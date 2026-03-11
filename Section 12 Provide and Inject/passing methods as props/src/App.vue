@@ -12,7 +12,7 @@
         </div>
       </div>
       <div class="col-12 text-white">       
-        <AddContact @add-contact="onAddContact"/>
+        <AddContact :onAddContact="onAddContact"/>
         <div class="row">
           <div v-for="contact in contacts" :key="contact.name">
             <Contact
