@@ -1,0 +1,54 @@
+<template>
+    <div class="container bg-black text pt-3" :style="{height: '100vh'}">
+      <h1 class="text-center text-success">ContactOpedia</h1>
+  
+      <div class="row align-items-center">
+        <button class="btn btn-primary text-black m-2 col-6" @click="toggleComponent">
+          Toggle Components
+        </button>
+        <br/>
+          <button class="btn btn-primary text-black m-2 col-6" @click="showLuckyNumber">
+            Lucky Number1
+          </button>
+          <button class="btn btn-primary text-black m-2 col-6" @click="showLuckyNumberV2">
+            Lucky Number2
+          </button>
+        <br/>
+        <keep-alive :include="['LuckyNumberV2', 'LuckyNumber']">
+          <component :is="currentComponent" />
+        </keep-alive>
+      </div>
+    </div>
+  </template>
+  
+  
+  <script setup>
+  import { ref, reactive,provide,compile,computed } from 'vue';
+import LuckyNumber from './LuckyNumber.vue';
+import LuckyNumberV2 from './LuckyNumberV2.vue';
+  
+  const newVersion = ref(true);
+  const currentComponent = computed(() => {
+    return newVersion.value ? LuckyNumberV2 : LuckyNumber;
+  });
+  
+    // Method to toggle component
+    function toggleComponent() {
+      newVersion.value = !newVersion.value;
+    }
+  
+    // Show LuckyNumber component
+    function showLuckyNumber() {
+      newVersion.value = false;
+    }
+  
+    // Show LuckyNumberV2 component
+    function showLuckyNumberV2() {
+      newVersion.value = true;
+    }
+  
+  
+  
+  
+  
+  </script>
