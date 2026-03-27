@@ -1,4 +1,4 @@
-import HomePage from "../components/Home/HomePage.vue";
+import HomePage from "@/components/Home/HomePage.vue";
 import Contact from "../components/Home/Contact.vue";
 import { createRouter, createWebHistory } from "vue-router";
 import ProductList from "@/components/Product/ProductList.vue";
@@ -9,7 +9,7 @@ import Login from "@/components/Authenticate/Login.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    { path: "/", component: HomePage },
+    { path: "/", component: HomePage,name: "home" },
     { path: "/contact", redirect: "/contact-us" },
     { path: "/contact-us", component: Contact, name: "contact" },
     { path: "/productList", component: ProductList },
@@ -29,6 +29,13 @@ const router = createRouter({
 router.beforeEach((to, from) => {
   console.log("Global beforeEach guard");
   console.log(to, from);
+  const isAuthenticated = false; 
+  if (to.name === "home") {
+    return true;
+  }
+  if (!isAuthenticated && to.name !== "login") {
+    return { name: "login" };
+  }
   return true;
 });
 export default router;
