@@ -3,7 +3,6 @@ import Contact from "../components/Home/Contact.vue";
 import { createRouter, createWebHistory } from "vue-router";
 import ProductList from "@/components/Product/ProductList.vue";
 import ProductDetail from "@/components/Product/ProductDetail.vue";
-import NotFound from "@/components/Layout/NotFound.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,7 +19,6 @@ const router = createRouter({
       name:"productDetail",props:true
     },
     {path: "/product",component: ProductDetail},
-    {path:"/:catchAll(.*)",component: NotFound },
   ],
 });
 

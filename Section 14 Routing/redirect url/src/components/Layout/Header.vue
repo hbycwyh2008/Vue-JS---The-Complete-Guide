@@ -16,10 +16,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <router-link class="nav-link active" aria-current="page" to="/">Home</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact Us</a>
+            <router-link class="nav-link" :to="{ name: 'contact' }">Contact Us</router-link>
           </li>
           <li class="nav-item dropdown">
             <a
@@ -29,19 +29,25 @@
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              Product
+              Products
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Product List</a></li>
-              <li><a class="dropdown-item" href="#">Product Details</a></li>
+              <li><router-link class="dropdown-item" to="/productList">Product List</router-link></li>
+              <li><router-link class="dropdown-item" to="/product">Product Details</router-link></li>
             </ul>
           </li>
           <li class="nav-item"></li>
         </ul>
         <form class="d-flex" role="search">
-          <button class="btn btn-outline-success" type="submit">Login</button>
+          <a aria-disabled="true" class="nav-link">Login</a>
         </form>
       </div>
     </div>
   </nav>
 </template>
+
+<script setup lang="ts">
+defineOptions({
+  name: 'AppHeader',
+})
+</script>

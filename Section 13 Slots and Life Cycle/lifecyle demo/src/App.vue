@@ -8,7 +8,7 @@
 </template>
 <script setup>
 import ButtonCounter from './components/ButtonCounter.vue';
-import {ref,onBeforeMount, onMounted, onBeforeUnmount, onUnmounted, ref} from 'vue';
+import {onBeforeMount, onMounted, onBeforeUnmount, onUnmounted, ref} from 'vue';
 const message = ref('Hello Vue');
 const showMessage = () => {
   message.value = 'Hello Vue from function!';
